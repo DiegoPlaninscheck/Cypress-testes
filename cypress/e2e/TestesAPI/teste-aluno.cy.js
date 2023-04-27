@@ -1,4 +1,4 @@
-describe("Verificar se o campo email esta em todos os alunos cadastrado no banco", () => {
+describe("Realizar testes com a entidade aluno", () => {
 
     let qtdAluno;
 
@@ -41,8 +41,9 @@ describe("Verificar se o campo email esta em todos os alunos cadastrado no banco
             "endereco": { "id": 1 }
         }
 
-        cy.request("PUT", "http://localhost:8085/aluno/5", aluno).as("TodoRequest");
+        cy.request("PUT", "http://localhost:8085/aluno/2", aluno).as("TodoRequest");
         cy.get("@TodoRequest").then((res) => {
+            console.log(res.body);
             expect(res.body).to.have.property("email", "emailEditado@gmail.com")
         })
     })
