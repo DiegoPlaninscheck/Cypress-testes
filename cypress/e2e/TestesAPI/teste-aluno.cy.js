@@ -1,11 +1,8 @@
 describe("Realizar testes com a entidade aluno", () => {
 
-    let qtdAluno;
-
     it("Selecionar todos os alunos do banco", () => {
         cy.request("GET", "http://localhost:8085/aluno").as("TodoRequest");
         cy.get("@TodoRequest").then((res) => {
-            qtdAluno = res.body.length;
             expect(res.body).to.not.null;
         })
     })
@@ -46,18 +43,5 @@ describe("Realizar testes com a entidade aluno", () => {
             console.log(res.body);
             expect(res.body).to.have.property("email", "emailEditado@gmail.com")
         })
-    })
-
-    it("Deletar um aluno", () => {
-        // cy.request("DELETE", "http://localhost:8085/aluno/" + qtdAluno).as("TodoRequest");
-        // cy.get("@TodoRequest").then((res) => {
-        //     expect(res.body).to.eq("Aluno deletado com sucesso!")
-        // })
-
-        // cy.request("GET", "http://localhost:8085/aluno/" + qtdAluno).as("TodoRequest");
-        // cy.get("@TodoRequest").then((res) => {
-        //     console.log(res);
-        //     expect(res.body).to.eq("Não foi encontrado nenhum aluno com o ID informado")
-        // })
     })
 })

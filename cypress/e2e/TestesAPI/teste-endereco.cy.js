@@ -1,11 +1,8 @@
 describe("Realizar teste com a entidade endereco", () => {
 
-    let qtdEndereco;
-
     it("Selecionar todos os enderecos do banco", () => {
         cy.request("GET", "http://localhost:8085/endereco").as("TodoRequest");
         cy.get("@TodoRequest").then((res) => {
-            qtdEndereco = res.body.length;
             expect(res.body).to.not.null;
         })
     })
@@ -51,18 +48,5 @@ describe("Realizar teste com a entidade endereco", () => {
             console.log(res.body);
             expect(res.body).to.have.property("cep", 321)
         })
-    })
-
-    it("Deletar um endereco", () => {
-        // cy.request("DELETE", "http://localhost:8085/endereco/" + (qtdEndereco + 2)).as("TodoRequest");
-        // cy.get("@TodoRequest").then((res) => {
-        //     expect(res.body).to.eq("Endereco deletado com sucesso!")
-        // })
-
-        // cy.request("GET", "http://localhost:8085/aluno/" + qtdAluno).as("TodoRequest");
-        // cy.get("@TodoRequest").then((res) => {
-        //     console.log(res);
-        //     expect(res.body).to.eq("Não foi encontrado nenhum aluno com o ID informado")
-        // })
     })
 })

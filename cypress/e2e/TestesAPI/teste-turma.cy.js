@@ -1,11 +1,8 @@
 describe("Realizar testes com a entidade turma", () => {
 
-    // let qtdAluno;
-
     it("Selecionar todas as turmas do banco", () => {
         cy.request("GET", "http://localhost:8085/turma").as("TodoRequest");
         cy.get("@TodoRequest").then((res) => {
-            // qtdAluno = res.body.length;
             expect(res.body).to.not.null;
         })
     })
